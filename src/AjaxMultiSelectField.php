@@ -1,6 +1,6 @@
 <?php
 
-namespace Level51\AjaxSelectField;
+namespace Sunnysideup\AjaxSelectField;
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\Security\Security;
@@ -37,7 +37,7 @@ use SilverStripe\View\Requirements;
  *      )->setDisplayFields([ 'title' => 'Custom Label', 'urlSegment' => 'URL' ])
  * ```
  *
- * @package Level51\AjaxSelectField
+ * @package Sunnysideup\AjaxSelectField
  */
 class AjaxMultiSelectField extends FormField
 {
@@ -56,8 +56,8 @@ class AjaxMultiSelectField extends FormField
             throw new \Exception(_t(__CLASS__ . '.ERROR_SEARCH_CONFIG'));
         }
 
-        Requirements::javascript('level51/silverstripe-ajax-select-field: client/dist/ajaxMultiSelectField.js');
-        Requirements::css('level51/silverstripe-ajax-select-field: client/dist/ajaxMultiSelectField.css');
+        Requirements::javascript('sunnysideup/silverstripe-ajax-select-field: client/dist/ajaxMultiSelectField.js');
+        Requirements::css('sunnysideup/silverstripe-ajax-select-field: client/dist/ajaxMultiSelectField.css');
 
         return parent::Field($properties);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Level51\AjaxSelectField;
+namespace Sunnysideup\AjaxSelectField;
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\Security\Security;
@@ -36,7 +36,7 @@ use SilverStripe\View\Requirements;
  *      )
  * ```
  *
- * @package Level51\AjaxSelectField
+ * @package Sunnysideup\AjaxSelectField
  */
 class AjaxSelectField extends FormField
 {
@@ -58,8 +58,8 @@ class AjaxSelectField extends FormField
             throw new \Exception(_t(__CLASS__ . '.ERROR_SEARCH_CONFIG'));
         }
 
-        Requirements::javascript('level51/silverstripe-ajax-select-field: client/dist/ajaxSelectField.js');
-        Requirements::css('level51/silverstripe-ajax-select-field: client/dist/ajaxSelectField.css');
+        Requirements::javascript('sunnysideup/silverstripe-ajax-select-field: client/dist/ajaxSelectField.js');
+        Requirements::css('sunnysideup/silverstripe-ajax-select-field: client/dist/ajaxSelectField.css');
 
         return parent::Field($properties);
     }

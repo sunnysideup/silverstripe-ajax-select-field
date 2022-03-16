@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Level51\AjaxSelectField;
+namespace Sunnysideup\AjaxSelectField;
 
 
 use SilverStripe\Control\HTTPRequest;
