@@ -1,6 +1,7 @@
 <?php
 
 namespace Sunnysideup\AjaxSelectField;
+use Sunnysideup\AjaxSelectField\AjaxSelectFieldTrait;
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\Security\Security;

@@ -102,7 +102,7 @@ trait AjaxSelectFieldTrait
      * Define the min length of search terms needed to execute the search.
      *
      * @param int $chars
-     * @return $this
+     * @return self
      */
     public function setMinSearchChars($chars)
     {
@@ -115,7 +115,7 @@ trait AjaxSelectFieldTrait
      * Set a custom placeholder.
      *
      * @param string $placeholder
-     * @return $this
+     * @return self
      */
     public function setPlaceholder($placeholder)
     {
@@ -130,7 +130,7 @@ trait AjaxSelectFieldTrait
      * Have to be in format ["key" => "value"].
      *
      * @param array $vars
-     * @return $this
+     * @return self
      */
     public function setGetVars($vars)
     {
@@ -146,7 +146,7 @@ trait AjaxSelectFieldTrait
      *
      * @param array $headers
      *
-     * @return AjaxSelectField
+     * @return self
      */
     public function setSearchHeaders($headers)
     {
