@@ -1,5 +1,5 @@
 <template>
-  <div class="level51-ajaxSelectFieldBase level51-ajaxMultiSelectField">
+  <div class="sunnysideup-ajaxSelectFieldBase sunnysideup-ajaxMultiSelectField">
     <vue-simple-suggest
       v-model="term"
       :list="suggest"
@@ -23,7 +23,7 @@
     </vue-simple-suggest>
 
     <div
-      class="level51-ajaxMultiSelectField-items"
+      class="sunnysideup-ajaxMultiSelectField-items"
       v-if="items.length > 0">
       <table>
         <tr>
@@ -32,7 +32,7 @@
             :key="key">
             {{ label }}
           </th>
-          <th class="level51-ajaxMultiSelectField-actions" />
+          <th class="sunnysideup-ajaxMultiSelectField-actions" />
         </tr>
         <tr
           v-for="item in items"
@@ -42,7 +42,7 @@
             :key="`${key}_${item.id}`">
             {{ item[key] }}
           </td>
-          <td class="level51-ajaxMultiSelectField-actions">
+          <td class="sunnysideup-ajaxMultiSelectField-actions">
             <a
               href=""
               :title="$t('actions.remove')"
@@ -144,8 +144,8 @@ export default {
 <style lang="less">
 @import '~styles/base';
 
-.level51-ajaxMultiSelectField {
-  .level51-ajaxMultiSelectField-items {
+.sunnysideup-ajaxMultiSelectField {
+  .sunnysideup-ajaxMultiSelectField-items {
     margin-top: @space-3;
 
     table {
@@ -172,7 +172,7 @@ export default {
         padding: @space-3;
       }
 
-      .level51-ajaxMultiSelectField-actions {
+      .sunnysideup-ajaxMultiSelectField-actions {
         width: 60px;
         text-align: center;
       }

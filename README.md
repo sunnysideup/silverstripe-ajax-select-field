@@ -59,7 +59,7 @@ Note that the search endpoint or callback has to support requests with a ?id par
 Define the list of fields to display for selected items, so basically the table columns. Defaults to `id` and `title`. 
 
 ## Installation
-`composer require level51/silverstripe-ajax-select-field`
+`composer require sunnysideup/silverstripe-ajax-select-field`
 
 ## Usage Example
 ### Single Select
@@ -116,4 +116,4 @@ AjaxMultiSelectField::create('MyField', 'My Field Label')
 - ext-json
 
 ## Maintainer
-- Level51 <hallo@lvl51.de>
+- Sunnysideup <hallo@lvl51.de>

@@ -23,7 +23,7 @@ const render = (el) => {
   }).$mount(`#${el.id}`);
 };
 
-watchElement('.level51-ajaxSelectFieldPlaceholder', (el) => {
+watchElement('.sunnysideup-ajaxSelectFieldPlaceholder', (el) => {
   setTimeout(() => {
     render(el);
   }, 1);

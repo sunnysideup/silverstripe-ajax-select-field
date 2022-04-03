@@ -1,4 +1,4 @@
-<div class="level51-ajaxSelectFieldPlaceholder"
+<div class="sunnysideup-ajaxSelectFieldPlaceholder"
      id="$ID"
      data-payload='$Payload.RAW'>
     <ajax-select-field />

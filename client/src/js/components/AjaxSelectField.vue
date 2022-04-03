@@ -1,5 +1,5 @@
 <template>
-  <div class="level51-ajaxSelectFieldBase level51-ajaxSelectField">
+  <div class="sunnysideup-ajaxSelectFieldBase sunnysideup-ajaxSelectField">
     <vue-simple-suggest
       v-model="term"
       :list="suggest"
