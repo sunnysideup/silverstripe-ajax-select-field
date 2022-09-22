@@ -116,4 +116,4 @@ AjaxMultiSelectField::create('MyField', 'My Field Label')
 - ext-json
 
 ## Maintainer
-- Sunnysideup <hallo@lvl51.de>
+- Level51 <hallo@lvl51.de>
