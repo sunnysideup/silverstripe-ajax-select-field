@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Sunnysideup\AjaxSelectField;
-
 
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
@@ -17,37 +15,34 @@ trait AjaxSelectFieldTrait
     private $minSearchChars = 3;
 
     /**
-     * @var string|null Search endpoint to call
+     * @var null|string Search endpoint to call
      */
-    private $searchEndpoint = null;
+    private $searchEndpoint;
 
     /**
-     * @var callable|null Callback function to call on search
+     * @var null|callable Callback function to call on search
      */
-    private $searchCallback = null;
+    private $searchCallback;
 
     /**
-     * @var string|null Custom placeholder for the search field
+     * @var null|string Custom placeholder for the search field
      */
-    private $placeholder = null;
+    private $placeholder;
 
     /**
-     * @var array|null Optional getVars which should be added to each search request
+     * @var null|array Optional getVars which should be added to each search request
      */
-    private $getVars = null;
+    private $getVars;
 
     /**
-     * @var array|null Optional request headers sent with each search request
+     * @var null|array Optional request headers sent with each search request
      */
-    private $searchHeaders = null;
+    private $searchHeaders;
 
     /**
      * Endpoint for search requests, if no custom searchEndpoint is set.
      *
      * Executes the searchCallback function provided and responds with json payload.
-     *
-     * @param HTTPRequest $request
-     * @return HTTPResponse
      */
     public function search(HTTPRequest $request): HTTPResponse
     {
@@ -66,6 +61,7 @@ trait AjaxSelectFieldTrait
      * If both is set, the searchEndpoint is prefered.
      *
      * @param string $endpoint
+     *
      * @return $this
      */
     public function setEndpoint($endpoint)
@@ -84,8 +80,10 @@ trait AjaxSelectFieldTrait
      * If both is set, the searchEndpoint is prefered.
      *
      * @param callable $callback
-     * @return $this
+     *
      * @throws \Exception
+     *
+     * @return $this
      */
     public function setSearchCallback($callback)
     {
@@ -102,6 +100,7 @@ trait AjaxSelectFieldTrait
      * Define the min length of search terms needed to execute the search.
      *
      * @param int $chars
+     *
      * @return self
      */
     public function setMinSearchChars($chars)
@@ -115,6 +114,7 @@ trait AjaxSelectFieldTrait
      * Set a custom placeholder.
      *
      * @param string $placeholder
+     *
      * @return self
      */
     public function setPlaceholder($placeholder)
@@ -130,6 +130,7 @@ trait AjaxSelectFieldTrait
      * Have to be in format ["key" => "value"].
      *
      * @param array $vars
+     *
      * @return self
      */
     public function setGetVars($vars)

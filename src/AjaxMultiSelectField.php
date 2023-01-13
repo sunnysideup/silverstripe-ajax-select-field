@@ -1,7 +1,6 @@
 <?php
 
 namespace Sunnysideup\AjaxSelectField;
-use Sunnysideup\AjaxSelectField\AjaxSelectFieldTrait;
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\Security\Security;
@@ -37,8 +36,6 @@ use SilverStripe\View\Requirements;
  *          }
  *      )->setDisplayFields([ 'title' => 'Custom Label', 'urlSegment' => 'URL' ])
  * ```
- *
- * @package Sunnysideup\AjaxSelectField
  */
 class AjaxMultiSelectField extends FormField
 {
@@ -51,9 +48,9 @@ class AjaxMultiSelectField extends FormField
         parent::__construct($name, $title, $value);
     }
 
-    public function Field($properties = array())
+    public function Field($properties = [])
     {
-        if (!$this->searchEndpoint && !$this->searchCallback) {
+        if (! $this->searchEndpoint && ! $this->searchCallback) {
             throw new \Exception(_t(__CLASS__ . '.ERROR_SEARCH_CONFIG'));
         }
 
@@ -67,6 +64,7 @@ class AjaxMultiSelectField extends FormField
      * Set the fields which should be shown for selected items.
      *
      * @param array $fields
+     *
      * @return $this
      */
     public function setDisplayFields($fields): AjaxMultiSelectField
@@ -78,10 +76,10 @@ class AjaxMultiSelectField extends FormField
 
     public function getDisplayFields(): array
     {
-        if (!$this->displayFields) {
+        if (! $this->displayFields) {
             return [
-                'id'    => 'ID',
-                'title' => 'Title'
+                'id' => 'ID',
+                'title' => 'Title',
             ];
         }
 
@@ -90,33 +88,29 @@ class AjaxMultiSelectField extends FormField
 
     /**
      * Get the payload/config passed to the vue component.
-     *
-     * @return string
      */
     public function getPayload(): string
     {
         return json_encode(
             [
-                'id'     => $this->ID(),
-                'name'   => $this->getName(),
-                'value'  => $this->getValueForComponent(),
-                'lang'   => substr(Security::getCurrentUser()->Locale, 0, 2),
+                'id' => $this->ID(),
+                'name' => $this->getName(),
+                'value' => $this->getValueForComponent(),
+                'lang' => substr(Security::getCurrentUser()->Locale, 0, 2),
                 'config' => [
                     'minSearchChars' => $this->minSearchChars,
                     'searchEndpoint' => $this->searchEndpoint ?: $this->Link('search'),
-                    'placeholder'    => $this->placeholder ?: _t(__CLASS__ . '.SEARCH_PLACEHOLDER'),
-                    'getVars'        => $this->getVars,
-                    'headers'        => $this->searchHeaders,
-                    'displayFields'  => $this->getDisplayFields()
-                ]
+                    'placeholder' => $this->placeholder ?: _t(__CLASS__ . '.SEARCH_PLACEHOLDER'),
+                    'getVars' => $this->getVars,
+                    'headers' => $this->searchHeaders,
+                    'displayFields' => $this->getDisplayFields(),
+                ],
             ]
         );
     }
 
     /**
      * Get the current value prepared for the vue component.
-     *
-     * @return array|null
      */
     private function getValueForComponent(): ?array
     {

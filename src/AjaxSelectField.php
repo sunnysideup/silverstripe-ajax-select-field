@@ -35,8 +35,6 @@ use SilverStripe\View\Requirements;
  *          }
  *      )
  * ```
- *
- * @package Sunnysideup\AjaxSelectField
  */
 class AjaxSelectField extends FormField
 {
@@ -52,9 +50,9 @@ class AjaxSelectField extends FormField
         parent::__construct($name, $title, $value);
     }
 
-    public function Field($properties = array())
+    public function Field($properties = [])
     {
-        if (!$this->searchEndpoint && !$this->searchCallback) {
+        if (! $this->searchEndpoint && ! $this->searchCallback) {
             throw new \Exception(_t(__CLASS__ . '.ERROR_SEARCH_CONFIG'));
         }
 
@@ -66,33 +64,51 @@ class AjaxSelectField extends FormField
 
     /**
      * Get the payload/config passed to the vue component.
-     *
-     * @return string
      */
     public function getPayload(): string
     {
         return json_encode(
             [
-                'id'     => $this->ID(),
-                'name'   => $this->getName(),
-                'value'  => $this->getValueForComponent(),
-                'lang'   => substr(Security::getCurrentUser()->Locale, 0, 2),
+                'id' => $this->ID(),
+                'name' => $this->getName(),
+                'value' => $this->getValueForComponent(),
+                'lang' => substr(Security::getCurrentUser()->Locale, 0, 2),
                 'config' => [
                     'minSearchChars' => $this->minSearchChars,
                     'searchEndpoint' => $this->searchEndpoint ?: $this->Link('search'),
-                    'placeholder'    => $this->placeholder ?: _t(__CLASS__ . '.SEARCH_PLACEHOLDER'),
-                    'getVars'        => $this->getVars,
-                    'headers'        => $this->searchHeaders,
-                    'idOnlyMode'     => $this->idOnlyMode
-                ]
+                    'placeholder' => $this->placeholder ?: _t(__CLASS__ . '.SEARCH_PLACEHOLDER'),
+                    'getVars' => $this->getVars,
+                    'headers' => $this->searchHeaders,
+                    'idOnlyMode' => $this->idOnlyMode,
+                ],
             ]
         );
     }
 
     /**
+     * En-/disable the idOnlyMode.
+     *
+     * If active the field will only store the "id" of the selected result.
+     * Otherwise the full result payload will be stored.
+     *
+     * Note that the search endpoint or callback has to support requests with a ?id param
+     * returning only that one result if the mode is active.
+     *
+     * @param bool $idOnlyModeActive
+     *
+     * @return $this
+     */
+    public function setIdOnlyMode($idOnlyModeActive): AjaxSelectField
+    {
+        $this->idOnlyMode = $idOnlyModeActive;
+
+        return $this;
+    }
+
+    /**
      * Get the current value prepared for the vue component (depending on the mode).
      *
-     * @return string|int|array|null
+     * @return null|array|int|string
      */
     private function getValueForComponent()
     {
@@ -105,24 +121,5 @@ class AjaxSelectField extends FormField
         }
 
         return null;
-    }
-
-    /**
-     * En-/disable the idOnlyMode.
-     *
-     * If active the field will only store the "id" of the selected result.
-     * Otherwise the full result payload will be stored.
-     *
-     * Note that the search endpoint or callback has to support requests with a ?id param
-     * returning only that one result if the mode is active.
-     *
-     * @param boolean $idOnlyModeActive
-     * @return $this
-     */
-    public function setIdOnlyMode($idOnlyModeActive): AjaxSelectField
-    {
-        $this->idOnlyMode = $idOnlyModeActive;
-
-        return $this;
     }
 }
