@@ -43,11 +43,6 @@ class AjaxMultiSelectField extends FormField
 
     private $displayFields = [];
 
-    public function __construct($name, $title = null, $value = null)
-    {
-        parent::__construct($name, $title, $value);
-    }
-
     public function Field($properties = [])
     {
         if (! $this->searchEndpoint && ! $this->searchCallback) {
@@ -64,8 +59,6 @@ class AjaxMultiSelectField extends FormField
      * Set the fields which should be shown for selected items.
      *
      * @param array $fields
-     *
-     * @return $this
      */
     public function setDisplayFields($fields): AjaxMultiSelectField
     {

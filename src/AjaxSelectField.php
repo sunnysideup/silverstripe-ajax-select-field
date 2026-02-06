@@ -45,11 +45,6 @@ class AjaxSelectField extends FormField
      */
     private $idOnlyMode = false;
 
-    public function __construct($name, $title = null, $value = null)
-    {
-        parent::__construct($name, $title, $value);
-    }
-
     public function Field($properties = [])
     {
         if (! $this->searchEndpoint && ! $this->searchCallback) {
@@ -95,8 +90,6 @@ class AjaxSelectField extends FormField
      * returning only that one result if the mode is active.
      *
      * @param bool $idOnlyModeActive
-     *
-     * @return $this
      */
     public function setIdOnlyMode($idOnlyModeActive): AjaxSelectField
     {
