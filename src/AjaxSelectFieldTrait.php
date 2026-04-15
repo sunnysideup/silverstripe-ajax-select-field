@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\AjaxSelectField;
 
+use Exception;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
 
@@ -81,7 +82,7 @@ trait AjaxSelectFieldTrait
      *
      * @param callable $callback
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return $this
      */
@@ -90,7 +91,7 @@ trait AjaxSelectFieldTrait
         if ($callback && is_callable($callback)) {
             $this->searchCallback = $callback;
         } else {
-            throw new \Exception(_t(__CLASS__ . '.ERROR_INVALID_CALLBACK'));
+            throw new Exception(_t(self::class . '.ERROR_INVALID_CALLBACK'));
         }
 
         return $this;

@@ -2,6 +2,8 @@
 
 namespace Sunnysideup\AjaxSelectField;
 
+use Override;
+use Exception;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
@@ -43,10 +45,11 @@ class AjaxMultiSelectField extends FormField
 
     private $displayFields = [];
 
+    #[Override]
     public function Field($properties = [])
     {
         if (! $this->searchEndpoint && ! $this->searchCallback) {
-            throw new \Exception(_t(__CLASS__ . '.ERROR_SEARCH_CONFIG'));
+            throw new Exception(_t(self::class . '.ERROR_SEARCH_CONFIG'));
         }
 
         Requirements::javascript('sunnysideup/silverstripe-ajax-select-field: client/dist/ajaxMultiSelectField.js');
@@ -93,7 +96,7 @@ class AjaxMultiSelectField extends FormField
                 'config' => [
                     'minSearchChars' => $this->minSearchChars,
                     'searchEndpoint' => $this->searchEndpoint ?: $this->Link('search'),
-                    'placeholder' => $this->placeholder ?: _t(__CLASS__ . '.SEARCH_PLACEHOLDER'),
+                    'placeholder' => $this->placeholder ?: _t(self::class . '.SEARCH_PLACEHOLDER'),
                     'getVars' => $this->getVars,
                     'headers' => $this->searchHeaders,
                     'displayFields' => $this->getDisplayFields(),
@@ -108,7 +111,7 @@ class AjaxMultiSelectField extends FormField
     private function getValueForComponent(): ?array
     {
         if ($value = $this->Value()) {
-            return json_decode($value, true);
+            return json_decode((string) $value, true);
         }
 
         return null;
