@@ -108,7 +108,7 @@ class AjaxSelectField extends FormField
      */
     private function getValueForComponent()
     {
-        if ($value = $this->Value()) {
+        if ($value = $this->getValue()) {
             if ($this->idOnlyMode) {
                 return $value;
             }

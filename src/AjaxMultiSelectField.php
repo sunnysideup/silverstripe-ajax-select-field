@@ -110,7 +110,7 @@ class AjaxMultiSelectField extends FormField
      */
     private function getValueForComponent(): ?array
     {
-        if ($value = $this->Value()) {
+        if ($value = $this->getValue()) {
             return json_decode((string) $value, true);
         }
 
